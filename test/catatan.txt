@@ -1,0 +1,1 @@
+mengubah setting di config apps_lti to MLTI

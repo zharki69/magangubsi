@@ -1,0 +1,161 @@
+<?php if (!defined('BASEPATH'))
+	exit('No direct script access allowed');
+/*
+<!-- .................................. -->
+<!-- ...........COPYRIGHT ............. -->
+<!-- Authors : Hisyam Husein .......... -->
+<!-- Email : hisyam.husein@gmail.com .. -->
+<!-- About : hisyam.ismul.com ......... -->
+<!-- Instagram : @hisyambsa............ -->
+<!-- .................................. -->
+*/
+class Users_model extends CI_Model
+{
+
+	public $table = 'users';
+	public $id = 'first_name';
+	public $order = 'ASC';
+
+	function __construct()
+	{
+		parent::__construct();
+	}
+
+	// get all
+	function get_all($kondisi = NULL)
+	{
+		if ($kondisi != NULL) {
+			$i = 0;
+			foreach ($kondisi as $item) // loop column 
+			{
+				if ($i === 0) // first loop
+				{
+					$this->db->group_start(); // open bracket.
+					$this->db->where($kondisi); // looping where
+				}
+				if (count($kondisi) - 1 == $i) { //last loop
+					$this->db->group_end(); //close bracket
+				}
+				$i++;
+			}
+		}
+		$this->db->order_by($this->id, $this->order);
+		// $this->db->join('karyawan', 'users.nip = karyawan.NIK', 'left');
+		return $this->db->get($this->table);
+	}
+
+	// get data by id
+	function get_by_id($id)
+	{
+		$this->db->where($this->id, $id);
+		// $this->db->join('karyawan', 'users.nip = karyawan.NIK', 'left');
+		return $this->db->get($this->table)->row();
+	}
+
+	// get total rows
+	function total_rows($q = NULL)
+	{
+		$this->db->like('id', $q);
+		$this->db->or_like('ip_address', $q);
+		$this->db->or_like('username', $q);
+		$this->db->or_like('password', $q);
+		$this->db->or_like('email', $q);
+		$this->db->or_like('activation_selector', $q);
+		$this->db->or_like('activation_code', $q);
+		$this->db->or_like('forgotten_password_selector', $q);
+		$this->db->or_like('forgotten_password_code', $q);
+		$this->db->or_like('forgotten_password_time', $q);
+		$this->db->or_like('remember_selector', $q);
+		$this->db->or_like('remember_code', $q);
+		$this->db->or_like('created_on', $q);
+		$this->db->or_like('last_login', $q);
+		$this->db->or_like('last_user_agent', $q);
+		$this->db->or_like('active', $q);
+		$this->db->or_like('nip', $q);
+		$this->db->or_like('first_name', $q);
+		$this->db->or_like('last_name', $q);
+		$this->db->or_like('boss', $q);
+		$this->db->or_like('company', $q);
+		$this->db->or_like('phone', $q);
+		$this->db->or_like('job_level', $q);
+		$this->db->or_like('unit_kerja', $q);
+		$this->db->or_like('region', $q);
+		$this->db->or_like('tanggal_lahir', $q);
+		$this->db->or_like('no_hp', $q);
+		$this->db->or_like('alamat', $q);
+		$this->db->or_like('in_charge_company', $q);
+		$this->db->from($this->table);
+		return $this->db->count_all_results();
+	}
+
+	// get data with limit and search
+	function get_limit_data($limit, $start = 0, $q = NULL)
+	{
+		$this->db->order_by($this->id, $this->order);
+		$this->db->like('id', $q);
+		$this->db->or_like('ip_address', $q);
+		$this->db->or_like('username', $q);
+		$this->db->or_like('password', $q);
+		$this->db->or_like('email', $q);
+		$this->db->or_like('activation_selector', $q);
+		$this->db->or_like('activation_code', $q);
+		$this->db->or_like('forgotten_password_selector', $q);
+		$this->db->or_like('forgotten_password_code', $q);
+		$this->db->or_like('forgotten_password_time', $q);
+		$this->db->or_like('remember_selector', $q);
+		$this->db->or_like('remember_code', $q);
+		$this->db->or_like('created_on', $q);
+		$this->db->or_like('last_login', $q);
+		$this->db->or_like('last_user_agent', $q);
+		$this->db->or_like('active', $q);
+		$this->db->or_like('nip', $q);
+		$this->db->or_like('first_name', $q);
+		$this->db->or_like('last_name', $q);
+		$this->db->or_like('boss', $q);
+		$this->db->or_like('company', $q);
+		$this->db->or_like('phone', $q);
+		$this->db->or_like('job_level', $q);
+		$this->db->or_like('unit_kerja', $q);
+		$this->db->or_like('region', $q);
+		$this->db->or_like('tanggal_lahir', $q);
+		$this->db->or_like('no_hp', $q);
+		$this->db->or_like('alamat', $q);
+		$this->db->or_like('in_charge_company', $q);
+		$this->db->limit($limit, $start);
+		return $this->db->get($this->table)->result();
+	}
+
+	// insert data
+	function insert($data)
+	{
+		$this->db->insert($this->table, $data);
+		return ($this->db->affected_rows() != 1) ? false : true;
+	}
+
+	// update data
+	function update($id, $data)
+	{
+		$this->db->where($this->id, $id);
+		$this->db->update($this->table, $data);
+		return ($this->db->affected_rows() != 1) ? false : true;
+	}
+	function update_where($user_id, $data)
+	{
+		$this->db->where('username', $user_id);
+		$this->db->update($this->table, $data);
+		return ($this->db->affected_rows() != 1) ? false : true;
+	}
+	// delete data
+	function delete($id)
+	{
+		$this->db->where($this->id, $id);
+		$this->db->delete($this->table);
+		return ($this->db->affected_rows() != 1) ? false : true;
+	}
+}
+
+/* End of file Users_model.php */
+/* Location: ./application/models/Users_model.php */
+/* Please DO NOT modify this information : */
+/* Generated by Hisyam 2020-07-28 09:47:48 */
+/* http://hisyam.ismul.com.com */

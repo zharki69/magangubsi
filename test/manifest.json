@@ -1,0 +1,94 @@
+{
+    "short_name": "APPS LTI",
+    "name": "LTI \n \u00A92020 All rights reserved",
+    "lang": "en",
+    "description": "All rights reserved",
+    "start_url": "http://localhost:8888/apps_lti",
+    "background_color": "#002744",
+    "theme_color": "#002744",
+    "dir": "ltr",
+    "display": "standalone",
+    "orientation": "any",
+    "scope": "/",
+    "icons": [
+        {
+            "src": "icon/android/android-icon-192x192.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "192x192"
+        },
+        {
+            "src": "icon/android/apple-icon-180x180.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "180x180"
+        },
+        {
+            "src": "icon/android/apple-icon-152x152.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "152x152"
+        },
+        {
+            "src": "icon/android/apple-icon-144x144.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "144x144"
+        },
+        {
+            "src": "icon/android/apple-icon-120x120.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "120x120"
+        },
+        {
+            "src": "icon/android/apple-icon-114x114.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "114x114"
+        },
+        {
+            "src": "icon/android/favicon-96x96.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "96x96"
+        },
+        {
+            "src": "icon/android/apple-icon-76x76.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "76x76"
+        },
+        {
+            "src": "icon/android/apple-icon-72x72.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "72x72"
+        },
+        {
+            "src": "icon/android/apple-icon-60x60.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "60x60"
+        },
+        {
+            "src": "icon/android/apple-icon-57x57.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "57x57"
+        },
+        {
+            "src": "icon/android/favicon-32x32.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "32x32"
+        },
+        {
+            "src": "icon/android/favicon-16x16.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "16x16"
+        }
+    ],
+    "prefer_related_applications": true
+}
